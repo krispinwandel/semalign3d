@@ -1,3 +1,3 @@
-# SemAlign3D: Semantic Correspondence between RGB-Images through Aligning 3D Object-Class Representations
+# SemAlign3D
 
-The code will be released prior to the start of CVPR 2025.
+This branch contains the code for the project webpage.

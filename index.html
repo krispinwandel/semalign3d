@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="SemAlign3D: Semantic Correspondence between RGB-Images through
+    Aligning 3D Object-Class Representations.">
+  <meta name="keywords" content="SemAlign3D, Sparse Semantic Matching">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SemAlign3D</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://irmv.sjtu.edu.cn">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hypernerf.github.io">
+              HyperNeRF
+            </a>
+          </div>
+        </div> -->
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">SemAlign3D: Semantic Correspondence between RGB-Images through
+              Aligning 3D Object-Class Representations</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://dub.sh/semalign3d-kw">Krispin Wandel</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://irmv.sjtu.edu.cn/wanghesheng">Hesheng Wang</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University,</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2503.22462" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="http://app.discuna.com/invite/krispinwandel"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <img class="icon-svg" src="https://support.discuna.com/assets/discuna-icon.svg" />
+                      <!-- <i class="fas fa-file-pdf"></i> -->
+                    </span>
+                    <span>Discuna</span>
+                  </a>
+                </span>
+                <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+               -->
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/krispinwandel/semalign3d"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+
+        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/teaser.mp4" type="video/mp4">
+        </video> -->
+        <img src="./static/images/hero.svg" class="center-image" alt="Interpolate start reference image." />
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">SemAlign3D</span> improves robustness of semantic matching against extreme view variation
+          and occlusion by introducing a geometric prior through 3D object-class representations that are built from a
+          small and sparsely annotated dataset.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <video controls style="max-width: 800px; margin: 0 auto; display: block;">
+    <source src="./static/videos/chair.mp4" type="video/mp4">
+  </video>
+
+
+  <!-- <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-steve">
+            <video poster="" id="steve" controls muted loop playsinline height="100%">
+              <source src="./static/videos/aeroplane.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" id="chair-tp" controls muted loop playsinline height="100%">
+              <source src="./static/videos/bicycle.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-shiba">
+            <video poster="" id="shiba" controls muted loop playsinline height="100%">
+              <source src="./static/videos/bottle.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" controls muted loop playsinline height="100%">
+              <source src="./static/videos/chair.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-blueshirt">
+            <video poster="" id="blueshirt" controls muted loop playsinline height="100%">
+              <source src="./static/videos/tv.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Semantic correspondence made tremendous progress through the recent advancements of large vision models
+              (LVM). While these LVMs have been shown to reliably capture local semantics, the same can currently not be
+              said for capturing global geometric relationships between semantic object regions. This problem leads to
+              unreliable performance for semantic correspondence between images with extreme view variation. In this
+              work, we aim to leverage monocular depth estimates to capture these geometric relationships for more
+              robust and data-efficient semantic correspondence. First, we introduce a simple but effective method to
+              build 3D object-class representations from monocular depth estimates and LVM features using a sparsely
+              annotated image correspondence dataset. Second, we formulate an alignment energy that can be minimized
+              using gradient descent to obtain an alignment between the 3D object-class representation and the
+              object-class instance in the input RGB-image. Our method achieves state-of-the-art matching accuracy in
+              multiple categories on the challenging SPair-71k dataset, increasing the PCK@0.1 score by more than 10
+              points on three categories and overall by 3.3 points from 85.6% to 88.9%. Additional resources and code
+              are available at <a href="https://dub.sh/semalign3d">dub.sh/semalign3d</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
+              allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div> -->
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">Building 3D Object-Class Representations</h2>
+      <p>
+        We build 3D object class representations for each category in the SPair-71k datasets. SPair-71k is a
+        popular dataset for semantic matching which includes 18 categories, each containing 100 images (55 train
+        images) with keypoint annotations (eg. "left wing end" is a keypoint).
+      </p>
+      <figure>
+        <img src="static/images/geom_fts.png" style="max-width: 400px;">
+        <img src="static/images/sparse_pc.png" style="max-width: 400px;">
+      </figure>
+      <figure>
+        <image src="static/images/dense_pc.svg" style="width: 800px"/>
+      </figure>
+      <!-- <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/dollyzoom-stacked.mp4" type="video/mp4">
+        </video> -->
+      <p>
+        Representations are obtained in five steps:
+      <ol>
+        <li>
+          Estimate <b>world coordiantes</b> for the keypoint image coordinates using monocular depth estimates.
+          
+        </li>
+        <li>
+          Fit a <b>beta distribution</b> over train images for all angles and distance ratios between keypoints.
+        </li>
+        <li>
+          Build a chanonical <b>sparse point cloud</b> by iteratively sampling keypoints according to these beta
+          distributions.
+        </li>
+        <li>
+          Build a <b>dense point cloud</b> by aligning all image point clouds with the just
+          obtained sparse point cloud via barycentric parametrization. Join and cluster aligned point clouds.
+        </li>
+        <li>
+          Compute a <b>feature vector</b> for each cluster in the dense point cloud by averaging image
+          patch features corresponding to the points in a close proximity to the cluster. Image patch features
+          are computed with DinoV2. Colors in the figure above correspond to the first three PCA components of
+          each point feature.
+        </li>
+      </ol>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- <div class="column"> -->
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">Aligning and Matching.</h2>
+      <p>
+        Let's recap the task: Given two RGB input images, \(\text{img}_1\) and \(\text{img}_2\), and query points in
+        \(\text{img}_1\),
+        we want to find the corresponding semantic matches in \(\text{img}_2\). Previous methods like GeoAware mainly
+        rely on semantic image features computed via fine-tuned DinoV2 model + Window SoftMax for matching.
+        In contrast, our method first aligns 3D object class representations with object instances in input images.
+        Then, we combine semantic <b>+ spatial</b> likelihood for matching.
+      </p>
+      <figure><img src="static/images/method_align.png" /></figure>
+      <p>
+        The alignment loss function consists of four terms:
+      <ol>
+        <li>
+          \(\mathcal{L}_\text{reconstruct}\): Maximizes image likelihood conditioned on the deformed 3D object-class
+          representation projected to the image plane.
+        </li>
+        <li>
+          \(\mathcal{L}_\text{geom}\): Keeps the shape of the object-class representation geometrically plausibile.
+        </li>
+        <li>
+          \(\mathcal{L}_\text{background}\) (optional): Penalizes configurations in which the representation projected
+          to the image plane falls on background pixels.
+        </li>
+        <li>
+          \(\mathcal{L}_\text{depth}\) (optional): Boosts convergence by locking an unnecessary degree of freedom.
+        </li>
+      </ol>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Results</h2>
+      <figure><img src="static/images/main_results.png"/></figure>
+      <p>
+        We report the Percentage of Correct Keypoints (PCK) on the challenging SPair-71k dataset. Our method shows
+        significant increased matching accuracy, in particular on rigid objects. Please consult our paper for additional
+        experiments, metrics, and datasets.
+      </p>
+      <figure><img src="static/images/sparse_matches.svg" style="width: 800px"/></figure>
+      Our method improves robustness against extreme view variation and other challenging cases, for example, when the front wheel of the airplane is aligned with the rear wheel.
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Q&A</h2>
+      <p>
+        Please join my personal Discuna community at <a
+          href="http://app.discuna.com/invite/krispinwandel">app.discuna.com/invite/krispinwandel</a> to ask questions
+        instead of writing me an email so that others can learn from your questions as well.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <!-- <p>
+        Coming soon
+      </p> -->
+      <pre>
+<code>@misc{2025_semalign3d,
+  title={SemAlign3D: Semantic Correspondence between RGB-Images through Aligning 3D Object-Class Representations}, 
+  author={Krispin Wandel and Hesheng Wang},
+  year={2025},
+  eprint={2503.22462},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2503.22462}, 
+}
+</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> made by the <a href="https://github.com/keunhong">Keunhong Park</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
