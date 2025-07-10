@@ -96,7 +96,7 @@ if "gen_depths" in steps:
 # -----------------------------------------------
 # 4) generate geom stats
 # -----------------------------------------------
-if "gen_geom_stats_1" in steps:
+if "gen_geom_stats" in steps:
     console.print(Panel("(4/6) Generate Geom Stats", style="bold blue"))
     geom_beta_dist_gen = geom_beta_dist_generator.GeomBetaDistGenerator(
         paths=paths, use_vggt=use_vggt
@@ -108,7 +108,7 @@ if "gen_geom_stats_1" in steps:
 # -----------------------------------------------
 # 5) create sparse pc from geom stats
 # -----------------------------------------------
-if "gen_sparse_pc_1" in steps:
+if "gen_sparse_pc" in steps:
     console.print(Panel("(5/6) Generate Sparse PC", style="bold blue"))
     sparse_pc_gen = sparse_pc_generator.SparsePCGenerator(
         paths, verbose=True, use_vggt=use_vggt

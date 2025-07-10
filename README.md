@@ -66,7 +66,7 @@ suffix: _depth_any
 
 ## Part 1: Generate 3D Shape Priors
 
-Simply run the following commands:
+SemAlign3D makes it possible to construct 3D shape priors from a very small set of keypoint-annotated RGB-images (~50 images per category). Simply run the following commands:
 
 ```
 conda activate semalign3d
