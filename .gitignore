@@ -1,0 +1,8 @@
+__pycache__
+src
+scripts/run_config.yaml
+semalign3d/core/ignore
+semalign3d/vis
+notebooks/ignore
+.vscode
+*.egg-info

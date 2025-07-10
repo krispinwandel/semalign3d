@@ -1,0 +1,11 @@
+dataset_name: spair-71k
+spair_data_dir: /media/user/ssd2t/datasets2/SPair-71k
+
+semalign3d_data_dir: /media/user/ssd2t/datasets2/spair71k-semalign3d
+embds_folder: /media/user/ssd2t/datasets2/spair71k-semalign3d/image_fts
+
+sam_vit_h_ckpt_path: /home/user/model_ckpts/sam_vit_h_4b8939.pth
+aggre_net_ckpt_path: /home/user/projects/GeoAware-SC/results_spair/best_856.PTH
+
+depth_generator: depth_any
+suffix: _depth_any
