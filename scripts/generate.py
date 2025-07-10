@@ -121,7 +121,7 @@ if "gen_sparse_pc" in steps:
 # 6) create dense pc from sparse pc
 # -----------------------------------------------
 if "gen_dense_pc" in steps:
-    console.print(Panel("(8/8) Generate Dense PC", style="bold blue"))
+    console.print(Panel("(6/6) Generate Dense PC", style="bold blue"))
     dense_pc_gen = dense_pc_generator.DensePCGenerator(paths=paths, use_vggt=use_vggt)
     dense_pc_gen.process_categories(categories)
     del dense_pc_gen  # free memory
